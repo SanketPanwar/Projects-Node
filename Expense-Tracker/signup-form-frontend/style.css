@@ -1,0 +1,40 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    /* text-align: center; */
+    padding: 5rem;
+
+    transition: background 0.3s linear, color 0.3s linear;
+}
+
+table {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 100%;
+  font-weight: bold;
+  background-color: white;
+
+}
+ h1 {
+   color: #ea503f;
+   font-family: Arial;
+ }
+
+ .btn {
+    background-color: rebeccapurple;
+    color: white;
+    font-family: inherit;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
