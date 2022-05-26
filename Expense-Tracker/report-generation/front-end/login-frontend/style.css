@@ -1,0 +1,107 @@
+
+* {
+    box-sizing: border-box;
+}
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#mainContainer {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    
+
+    transition: background 0.3s linear, color 0.3s linear;
+}
+
+table {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 100%;
+  font-weight: bold;
+  background-color: white;
+
+}
+ h1 {
+   color: #ea503f;
+   font-family: Arial;
+ }
+
+ .btn {
+    background-color: rebeccapurple;
+    color: white;
+    font-family: inherit;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin:1rem;
+}
+
+#notificationContainer{
+    position:fixed;
+    bottom:10px;
+    right:10px;
+}
+.notification {
+    background-color: #56CCF2;
+    border-radius: 5px;
+    color: black;
+    padding: 2rem;
+    margin: 1rem;
+}
+
+.notification h4 span{
+    color:rgb(235, 33, 33);
+}
+
+a{
+  border-bottom: 1px solid blue;
+  text-decoration: none;
+  color: #0a2be2;
+  cursor: pointer;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr, .styled-table tfoot tr{
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+/* .styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+} */
