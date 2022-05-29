@@ -41,7 +41,7 @@ form.addEventListener('submit',(e)=>{
     amount.value='';
     description.value='';
     category.value='';
-    axios.post('http://localhost:5000/addExpense',obj,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
+    axios.post('http://65.1.111.110:3000/addExpense',obj,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
     .then(res=>{
         notifyUser(res.data.message)
     })
@@ -79,7 +79,7 @@ monthlyBtn.addEventListener('click',()=>{
 function displayExpenses(limit,page=1,rows=localStorage.getItem('rows')){
     const displayContainer=document.getElementById('displayContainer')
     displayContainer.innerHTML=''
-    axios.get(`http://localhost:5000/getExpenses?limit=${limit}&page=${page}&rows=${rows}`,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
+    axios.get(`http://65.1.111.110:3000/getExpenses?limit=${limit}&page=${page}&rows=${rows}`,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
     .then(response=>{
         console.log(response.data.expenses)
         const table=document.createElement('table')
@@ -138,7 +138,7 @@ displayContainer.addEventListener('click',(e)=>{
     if(e.target.id=='dltbtn'){
         const trId=e.target.parentNode.parentNode.id.substring(1);
         const tr=e.target.parentNode.parentNode
-        axios.post(`http://localhost:5000/deleteExpense/${trId}`,{},{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
+        axios.post(`http://65.1.111.110:3000/deleteExpense/${trId}`,{},{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
         .then((res)=>{
             tr.remove()
             notifyUser(res.data.message)
@@ -150,7 +150,7 @@ displayContainer.addEventListener('click',(e)=>{
 //download Expense
 const downloadBtn=document.getElementById('download')
 downloadBtn.addEventListener('click',()=>{
-    axios.get('http://localhost:5000/download',{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
+    axios.get('http://65.1.111.110:3000/download',{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
     .then(response=>{
         const link=document.createElement('a');
         link.href=`${response.data.fileUrl}`;
@@ -165,7 +165,7 @@ downloadBtn.addEventListener('click',()=>{
 
 document.addEventListener('DOMContentLoaded',()=>{
     const previousDownloadDiv=document.getElementById('previousDownload')
-    axios.get('http://localhost:5000/previousdownloads',{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
+    axios.get('http://65.1.111.110:3000/previousdownloads',{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
     .then(response=>{
         previousDownloadDiv.innerHTML='';
         let heading=document.createElement('h2');

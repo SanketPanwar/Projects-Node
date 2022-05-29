@@ -61,7 +61,7 @@ app.use((req,res)=>{
 sequelize.sync()
 .then(()=>{
     //https.createServer({key:privateKey, cert:certificate},app)
-         app.listen(process.env.PORT||5000)
+         app.listen(process.env.PORT||3000)
 })
 .catch(err=>{
     console.log(err)

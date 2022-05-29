@@ -13,7 +13,7 @@ form.addEventListener('submit',(e)=>{
 
     email.value=''
     password.value=''
-    axios.post('http://localhost:5000/user/login',obj)
+    axios.post('http://65.1.111.110:3000/user/login',obj)
     .then(res=>{
         localStorage.setItem('token',`${res.data.token}`)
         localStorage.setItem('rows',5)
@@ -55,7 +55,7 @@ forgotPassword.addEventListener('click',()=>{
         //   <a href="">Login Now </a>
         // `
         // document.getElementById('FPdiv').appendChild(div)
-        axios.post('http://localhost:5000/forgot/password',{email:email})
+        axios.post('http://65.1.111.110:3000/forgot/password',{email:email})
         .then(response=>{
             if(!response.data.success){
             alert(response.data.message)

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         email.value=''
         password.value=''
         phone.value=''
-        axios.post('http://localhost:5000/user/signup',obj)
+        axios.post('http://65.1.111.110:3000/user/signup',obj)
         .then(res=>{
             alert(res.data.message)
             window.location.href='./login.html'

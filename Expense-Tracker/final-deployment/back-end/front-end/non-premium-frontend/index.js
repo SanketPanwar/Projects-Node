@@ -26,7 +26,7 @@ form.addEventListener('submit',(e)=>{
     amount.value='';
     description.value='';
     category.value='';
-    axios.post('http://localhost:5000/addExpense',obj,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
+    axios.post('http://65.1.111.110:3000/addExpense',obj,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
     .then(res=>{
         notifyUser(res.data.message)
     })
@@ -64,7 +64,7 @@ monthlyBtn.addEventListener('click',()=>{
 function displayExpenses(limit,page=1,rows=localStorage.getItem('rows')){
     const displayContainer=document.getElementById('displayContainer')
     displayContainer.innerHTML=''
-    axios.get(`http://localhost:5000/getExpenses?limit=${limit}&page=${page}&rows=${rows}`,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
+    axios.get(`http://65.1.111.110:3000/getExpenses?limit=${limit}&page=${page}&rows=${rows}`,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
     .then(response=>{
         console.log(response.data.expenses)
         const table=document.createElement('table')
@@ -135,7 +135,7 @@ displayContainer.addEventListener('click',(e)=>{
         const liId=e.target.parentNode.parentNode.id.substring(1);
         const li=e.target.parentNode.parentNode
         //li.remove()
-        axios.post(`http://localhost:5000/deleteExpense/${liId}`,{},{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
+        axios.post(`http://65.1.111.110:3000/deleteExpense/${liId}`,{},{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
         .then((res)=>{
             li.remove()
             notifyUser(res.data.message)
@@ -157,7 +157,7 @@ let orderId;
 
 premiumBtn.addEventListener("click", () => {
     container.classList.add("active");
-    axios.post('http://localhost:5000/premium/create/order',{amount:amount},{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})    
+    axios.post('http://65.1.111.110:3000/premium/create/order',{amount:amount},{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})    
     .then(response=>{
         orderId=response.data.order.id;
         payBtn.style="display:block"
@@ -192,7 +192,7 @@ payBtn.addEventListener('click',(e)=>{
             alert(`Payment successful: your order ID: ${response.razorpay_order_id} and payment ID:${response.razorpay_payment_id}`);
             window.location.href="./premium-frontend/premium.html"
             
-            axios.post('http://localhost:5000/transaction/detail',{orderId:orderId,paymentId:paymentId},{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
+            axios.post('http://65.1.111.110:3000/transaction/detail',{orderId:orderId,paymentId:paymentId},{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
             .then()
             .catch(err=>{
                 console.log(err)
