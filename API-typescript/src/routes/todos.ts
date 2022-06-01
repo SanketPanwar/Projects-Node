@@ -1,25 +1,31 @@
 import {Router} from 'express'
+import { URLSearchParams } from 'url';
 import {todo} from '../models/todo'
 
 const router=Router()
 
 let todos:todo[]=[];
 
+type requestBody={text:string}
+type requestParams={id:string}
+
 router.get('/',(req,res,next)=>{
     return res.status(200).json({todos:todos})
 })
 
 router.post('/todos',(req,res,next)=>{
+    const body=req.body as requestBody
     const newTodo:todo={
         id:new Date().toISOString(),
-        text:req.body.text
+        text:body.text
     }
     todos.push(newTodo)
     return res.status(201).json({todo:newTodo})
 })
 
 router.post('/delete/:id',(req,res,next)=>{
-    const id=req.params.id;
+    const params=req.params as requestParams
+    const id=params.id;
     let found:boolean=false;
     todos=todos.filter(todo=>{
         if(todo.id==id)
@@ -33,11 +39,13 @@ router.post('/delete/:id',(req,res,next)=>{
 
 })
 router.post('/edit/:id',(req,res,next)=>{
-    const id=req.params.id;
+    const body=req.body as requestBody;
+    const params=req.params as requestParams;
+    const id=params.id;
     let found:boolean=false;
     todos.forEach(todo=>{
         if(todo.id==id){
-            todo.text=req.body.text;
+            todo.text=body.text;
             found=true;
         }
         
